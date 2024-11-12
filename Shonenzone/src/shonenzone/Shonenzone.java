@@ -6,6 +6,7 @@ package shonenzone;
 
 import shonenzone.vista.Home;
 
+import shonenzone.vista.Registro;
 /**
  *
  * @author Lenovo
@@ -19,9 +20,12 @@ public class Shonenzone {
         // TODO code application logic here
         
         
-        Home home = new Home();
-        home.setVisible(true);
+        //Home home = new Home();
+        Registro registro = new Registro();
+        registro.setVisible(true);
+        //home.setVisible(true);
         System.out.println("Si, compila");
+        
     }
     
 }
