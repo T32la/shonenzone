@@ -4,7 +4,7 @@
  */
 package shonenzone;
 
-import shonenzone.vista.Home;
+import shonenzone.vista.Login;
 
 import shonenzone.vista.Registro;
 /**
@@ -20,7 +20,7 @@ public class Shonenzone {
         // TODO code application logic here
         
         
-        Home home = new Home();
+        Login home = new Login();
 //        Registro registro = new Registro();
 //        registro.setVisible(true);
         home.setVisible(true);
