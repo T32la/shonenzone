@@ -21,11 +21,8 @@ public class Shonenzone {
         
         
         Login home = new Login();
-//        Registro registro = new Registro();
-//        registro.setVisible(true);
         home.setVisible(true);
-        Registro registro = new Registro();
-        registro.setVisible(true);
+
        // home.setVisible(true);
         System.out.println("Si, compila");
         
