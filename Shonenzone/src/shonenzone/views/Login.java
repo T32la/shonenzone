@@ -253,9 +253,6 @@ public class Login extends javax.swing.JFrame {
         String email = this.lgemail.getText();
         String password = this.lgpassword.getText();
         
-        System.out.println(email);
-        System.out.println(password);
-        
         User usuario = new User();
         usuario.setEmail(email);
         usuario.setPassword(password);
