@@ -4,9 +4,8 @@
  */
 package shonenzone;
 
-import shonenzone.vista.Login;
-
-import shonenzone.vista.Registro;
+import shonenzone.views.Login;
+import shonenzone.views.Registro;
 /**
  *
  * @author Lenovo
