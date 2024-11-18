@@ -4,7 +4,15 @@
  */
 package shonenzone.views;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 import shonenzone.models.User;
+import shonenzone.models.ValidateUser;
 
 /**
  *
@@ -19,9 +27,110 @@ public class Login extends javax.swing.JFrame {
         initComponents();
     }
 
+//    private boolean validarCredenciales(String mail, String password) {
+//        // Carpeta donde se almacena los datos
+//        File carpetaUsuario = new File(".data");
+//        
+//        // Verificar que existe la carpeta
+//        if(!carpetaUsuario.exists() || !carpetaUsuario.isDirectory()) {
+//            JOptionPane.showMessageDialog(this, "Error...", "Error...", JOptionPane.ERROR_MESSAGE);
+//            return false;
+//        }
+//        
+//        // Verificar Archivo
+//        String emn = mail.trim().toLowerCase();
+//        File archivoUsuario = new File(carpetaUsuario, emn);
+//        
+//        // Verificar si existe el archivos
+//        if (!archivoUsuario.exists()) {
+//            JOptionPane.showMessageDialog(this, "El correo si existe");
+//        }
+//        
+//        try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuario))) {
+//            String linea;
+//            String passwordArchivo = "";
+//            
+//            
+//            while ((linea = reader.readLine()) != null) {
+//                if (linea.startsWith("Contrasena: ")) {
+//                    passwordArchivo = linea.split(":")[1].trim();
+//                }
+//            }
+//            
+//            if (password.equals(passwordArchivo)) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } catch (IOException e) {
+//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//            return false;
+//        }
+//    }
+ 
+    private boolean validarCredenciales(String mail, String password) {
+        // Carpeta donde se almacenan los datos de los usuarios
+        File carpetaUsuario = new File("data");
+
+        // Verificar si existe la carpeta, si no, crearla
+        if (!carpetaUsuario.exists()) {
+            if (!carpetaUsuario.mkdir()) {
+                JOptionPane.showMessageDialog(null, "Error al crear la carpeta de datos.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+
+        // Archivo donde se almacenan los datos de los usuarios
+        File archivoDatos = new File(carpetaUsuario, "db.txt");
+
+        // Verificar si el archivo existe, si no, crearlo
+        if (!archivoDatos.exists()) {
+            JOptionPane.showMessageDialog(null, "El archivo de datos no existe. Creando uno nuevo...", "Archivo no encontrado", JOptionPane.INFORMATION_MESSAGE);
+            try {
+                if (archivoDatos.createNewFile()) {
+                    JOptionPane.showMessageDialog(null, "El archivo data.txt ha sido creado. Por favor, registre un usuario.", "Archivo Creado", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(null, "Error al crear el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+            return false; // Archivo creado, el usuario debe registrar credenciales
+        }
+
+        // Leer y validar las credenciales
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivoDatos))) {
+            String linea;
+
+            while ((linea = reader.readLine()) != null) {
+                // Separar los datos de correo y contraseña
+                if (linea.startsWith("Correo: ")) {
+                    String[] partes = linea.split(",");
+                    if (partes.length == 2) {
+                        String correoArchivo = partes[1].split(":")[1].trim();
+                        String passwordArchivo = partes[2].split(":")[1].trim();
+
+                        // Validar correo y contraseña
+                        if (correoArchivo.equals(mail) && passwordArchivo.equals(password)) {
+                            return true; // Credenciales válidas
+                        }
+                    }
+                }
+            }
+
+            // Si llegamos aquí, las credenciales no coinciden
+            JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
+     * WARNING: Do NOT modi
+     * fy this code. The content of this method is always
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
@@ -44,7 +153,7 @@ public class Login extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        see = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -113,11 +222,16 @@ public class Login extends javax.swing.JFrame {
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/views/one.PNG"))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/source/img/Eye.png"))); // NOI18N
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        see.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/source/img/Eye.png"))); // NOI18N
+        see.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        see.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                seeMouseClicked(evt);
+            }
+        });
+        see.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                seeActionPerformed(evt);
             }
         });
 
@@ -153,9 +267,9 @@ public class Login extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lgemail, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lgpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jButton1)))
-                                .addGap(393, 393, 393))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(see)))
+                                .addGap(401, 401, 401))
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,9 +329,9 @@ public class Login extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel7))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lgpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(see)
+                                    .addComponent(lgpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(32, 32, 32)
                                 .addComponent(lgingresar)
                                 .addGap(32, 32, 32)
@@ -246,6 +360,7 @@ public class Login extends javax.swing.JFrame {
         // abre el formulario de registro, si el usuario no tiene cuenta.
         Registro rg = new Registro();
         rg.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void lgingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lgingresarMouseClicked
@@ -253,21 +368,48 @@ public class Login extends javax.swing.JFrame {
         String email = this.lgemail.getText();
         String password = this.lgpassword.getText();
         
-        User usuario = new User();
-        usuario.setEmail(email);
-        usuario.setPassword(password);
+
         
-        System.out.println(usuario.getEmail());
-        System.out.println(usuario.getPassword());
+        // Verifica si existe la carpeta o crea la carpeta
         
-        this.lgemail.setText("");
-        this.lgpassword.setText("");
+        if (email.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar credenciales desde la carpeta de usuarios
+        if (validarCredenciales(email, password)) {
+            // Guardar el correo del usuario actual en la sesión
+            emailUserAll.iniciarSesion(email);
+
+            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+
+            // Abrir la página principal
+                Home ingresar = new Home();
+                ingresar.setVisible(true);
+                ingresar.pack();
+                ingresar.setLocationRelativeTo(null);
+                this.dispose();
+//                Home home = new Home();
+//                ingresar.setVisible(true); 
+                
+            this.dispose(); // Cerrar la ventana actual
+        } else {
+            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+
         
     }//GEN-LAST:event_lgingresarMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_seeActionPerformed
+
+    private void seeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seeMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_seeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,7 +448,6 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -326,5 +467,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField lgemail;
     private javax.swing.JButton lgingresar;
     private javax.swing.JTextField lgpassword;
+    private javax.swing.JButton see;
     // End of variables declaration//GEN-END:variables
 }
