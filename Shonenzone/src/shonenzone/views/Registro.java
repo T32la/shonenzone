@@ -203,52 +203,56 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_ruserActionPerformed
 
     private void raccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_raccountMouseClicked
+
         // TODO add your handling code here:
-        
         String user = this.ruser.getText();
         String email = this.remail.getText();
         String password = this.rpassword.getText();
         String confpassword = this.rconfpassword.getText();
-        
-        
-        User us = new User();
-        
-        us.setUsername(user);
-        us.setEmail(email);
-        us.setPassword(password);
-        us.setValidpassword(confpassword);
-        
+
+        if (!password.equals(confpassword)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Verifica si existen campos vacíos
+        if (user.isEmpty() || email.isEmpty() || password.isEmpty() || confpassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Limpia los campos del formulario
         this.ruser.setText("");
         this.remail.setText("");
         this.rpassword.setText("");
         this.rconfpassword.setText("");
-        
-        Login lg = new Login();
-        lg.setVisible(true); 
-        
-        // Verifica si existe la carpeta o crea la carpeta.
+
+        // Crea la carpeta si no existe
         File carpeta = new File("data");
-        
         if (!carpeta.exists()) {
             carpeta.mkdir();
         }
-        
+
+        // Archivo donde se guardarán los usuarios
         File archivoUsuario = new File(carpeta, "db.txt");
-        
-        try (BufferedWriter writes = new BufferedWriter(new FileWriter(archivoUsuario))) {
+
+        try (BufferedWriter writes = new BufferedWriter(new FileWriter(archivoUsuario, true))) { // Modo 'append' habilitado
             writes.write("Username: " + user);
             writes.newLine();
             writes.write("Email: " + email);
             writes.newLine();
             writes.write("Password: " + password);
             writes.newLine();
-            writes.write("ValidPassword: " + confpassword);
-            writes.newLine();
             writes.write("------------------");
-            JOptionPane.showMessageDialog(this,"Usuario registrado exitosimatent. :)");    
+            writes.newLine();
+            JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente. :)");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Error al guardar los datos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        // Abre la ventana de Login
+        Login lg = new Login();
+        lg.setVisible(true); 
     }//GEN-LAST:event_raccountMouseClicked
 
     

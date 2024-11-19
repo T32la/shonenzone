@@ -119,8 +119,13 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+<<<<<<< HEAD
+              <Component id="jButton2" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace pref="316" max="32767" attributes="0"/>
+=======
               <Component id="raccount" min="-2" pref="44" max="-2" attributes="0"/>
               <EmptySpace pref="327" max="32767" attributes="0"/>
+>>>>>>> 873d3fa7af71f0dcfdadf0b4e42f43cdd20b969c
           </Group>
       </Group>
     </DimensionLayout>
