@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package shonenzone.views;
 
 import java.io.BufferedReader;
@@ -13,6 +9,7 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 import shonenzone.models.User;
 import shonenzone.models.ValidateUser;
+import shonenzone.methods.LoginValidator;
 
 /**
  *
@@ -25,114 +22,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
-    }
+    }  
 
-//    private boolean validarCredenciales(String mail, String password) {
-//        // Carpeta donde se almacena los datos
-//        File carpetaUsuario = new File(".data");
-//        
-//        // Verificar que existe la carpeta
-//        if(!carpetaUsuario.exists() || !carpetaUsuario.isDirectory()) {
-//            JOptionPane.showMessageDialog(this, "Error...", "Error...", JOptionPane.ERROR_MESSAGE);
-//            return false;
-//        }
-//        
-//        // Verificar Archivo
-//        String emn = mail.trim().toLowerCase();
-//        File archivoUsuario = new File(carpetaUsuario, emn);
-//        
-//        // Verificar si existe el archivos
-//        if (!archivoUsuario.exists()) {
-//            JOptionPane.showMessageDialog(this, "El correo si existe");
-//        }
-//        
-//        try (BufferedReader reader = new BufferedReader(new FileReader(archivoUsuario))) {
-//            String linea;
-//            String passwordArchivo = "";
-//            
-//            
-//            while ((linea = reader.readLine()) != null) {
-//                if (linea.startsWith("Contrasena: ")) {
-//                    passwordArchivo = linea.split(":")[1].trim();
-//                }
-//            }
-//            
-//            if (password.equals(passwordArchivo)) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-//        } catch (IOException e) {
-//            JOptionPane.showMessageDialog(this, "Error" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//            return false;
-//        }
-//    }
- 
-    private boolean validarCredenciales(String mail, String password) {
-        // Carpeta donde se almacenan los datos de los usuarios
-        File carpetaUsuario = new File("data");
-
-        // Verificar si existe la carpeta, si no, crearla
-        if (!carpetaUsuario.exists()) {
-            if (!carpetaUsuario.mkdir()) {
-                JOptionPane.showMessageDialog(null, "Error al crear la carpeta de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-        }
-
-        // Archivo donde se almacenan los datos de los usuarios
-        File archivoDatos = new File(carpetaUsuario, "db.txt");
-
-        // Verificar si el archivo existe, si no, crearlo
-        if (!archivoDatos.exists()) {
-            JOptionPane.showMessageDialog(null, "El archivo de datos no existe. Creando uno nuevo...", "Archivo no encontrado", JOptionPane.INFORMATION_MESSAGE);
-            try {
-                if (archivoDatos.createNewFile()) {
-                    JOptionPane.showMessageDialog(null, "El archivo data.txt ha sido creado. Por favor, registre un usuario.", "Archivo Creado", JOptionPane.INFORMATION_MESSAGE);
-                }
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error al crear el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-            return false; // Archivo creado, el usuario debe registrar credenciales
-        }
-
-        // Leer y validar las credenciales
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivoDatos))) {
-            String linea;
-
-            while ((linea = reader.readLine()) != null) {
-                // Separar los datos de correo y contraseña
-                if (linea.startsWith("Correo: ")) {
-                    String[] partes = linea.split(",");
-                    if (partes.length == 2) {
-                        String correoArchivo = partes[1].split(":")[1].trim();
-                        String passwordArchivo = partes[2].split(":")[1].trim();
-
-                        // Validar correo y contraseña
-                        if (correoArchivo.equals(mail) && passwordArchivo.equals(password)) {
-                            return true; // Credenciales válidas
-                        }
-                    }
-                }
-            }
-
-            // Si llegamos aquí, las credenciales no coinciden
-            JOptionPane.showMessageDialog(null, "Correo o contraseña incorrectos.", "Error de autenticación", JOptionPane.ERROR_MESSAGE);
-            return false;
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error al leer el archivo: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
-
-    
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modi
-     * fy this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -367,39 +258,31 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here
         String email = this.lgemail.getText();
         String password = this.lgpassword.getText();
+        String filePath = "data/db.txt";
         
+        String result = LoginValidator.validate(filePath, email, password);
 
-        
-        // Verifica si existe la carpeta o crea la carpeta
-        
-        if (email.isEmpty() || email.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (email.isEmpty() || password.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "Error", javax.swing.JOptionPane.WARNING_MESSAGE);
             return;
         }
 
-        // Validar credenciales desde la carpeta de usuarios
-        if (validarCredenciales(email, password)) {
-            // Guardar el correo del usuario actual en la sesión
-            emailUserAll.iniciarSesion(email);
+           // Mostrar el resultado
+        if (result.equals("¡Inicio de sesión exitoso!")) {
+            // Mostrar un mensaje de éxito
+            javax.swing.JOptionPane.showMessageDialog(this, result, "Bienvenido", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-            JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso.");
+            // Cerrar el JFrame de login (opcional, si no se quiere mantener la ventana abierta)
+            this.setVisible(false); // Ocultar la ventana de login
 
-            // Abrir la página principal
-                Home ingresar = new Home();
-                ingresar.setVisible(true);
-                ingresar.pack();
-                ingresar.setLocationRelativeTo(null);
-                this.dispose();
-//                Home home = new Home();
-//                ingresar.setVisible(true); 
-                
-            this.dispose(); // Cerrar la ventana actual
+            // Crear y mostrar el JFrame de Home
+            Home home = new Home(); // Asegúrate de que Home sea la clase de tu ventana principal
+            home.setVisible(true); // Mostrar la ventana Home
         } else {
-            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+            // Si el login falla, mostrar mensaje de error
+            javax.swing.JOptionPane.showMessageDialog(this, result, "Error de Login", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
-        
 
-        
     }//GEN-LAST:event_lgingresarMouseClicked
 
     private void seeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeActionPerformed

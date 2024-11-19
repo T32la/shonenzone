@@ -236,13 +236,13 @@ public class Registro extends javax.swing.JFrame {
         File archivoUsuario = new File(carpeta, "db.txt");
         
         try (BufferedWriter writes = new BufferedWriter(new FileWriter(archivoUsuario))) {
-            writes.write(user);
+            writes.write("Username: " + user);
             writes.newLine();
-            writes.write(email);
+            writes.write("Email: " + email);
             writes.newLine();
-            writes.write(password);
+            writes.write("Password: " + password);
             writes.newLine();
-            writes.write(confpassword);
+            writes.write("ValidPassword: " + confpassword);
             writes.newLine();
             writes.write("------------------");
             JOptionPane.showMessageDialog(this,"Usuario registrado exitosimatent. :)");    
