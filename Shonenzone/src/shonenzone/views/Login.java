@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import shonenzone.models.User;
-import shonenzone.models.ValidateUser;
+
 import shonenzone.methods.LoginValidator;
 
 /**
