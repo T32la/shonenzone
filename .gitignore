@@ -1,6 +1,10 @@
 # Compiled class file
 *.class
 
+Shonenzone/data/*
+Shonenzone/data/
+Shonenzone/data/
+
 .idea
 .\.idea\
 out/
