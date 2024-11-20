@@ -8,11 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import shonenzone.models.User;
 
 /**
  *
@@ -252,7 +248,9 @@ public class Registro extends javax.swing.JFrame {
 
         // Abre la ventana de Login
         Login lg = new Login();
-        lg.setVisible(true); 
+        lg.setVisible(true);
+        // Se cierra la ventana.
+        this.dispose();
     }//GEN-LAST:event_raccountMouseClicked
 
     
