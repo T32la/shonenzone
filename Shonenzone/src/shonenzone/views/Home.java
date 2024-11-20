@@ -49,11 +49,11 @@ public class Home extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-<<<<<<< HEAD
+
         salir = new javax.swing.JButton();
-=======
+
         btnBuscar = new javax.swing.JButton();
->>>>>>> 1da85941af8c051fcb3fa88682713d461fc44288
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,12 +113,12 @@ public class Home extends javax.swing.JFrame {
         jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jComboBox1.setName("Usuario"); // NOI18N
 
-<<<<<<< HEAD
+
         salir.setText("salir");
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 salirMouseClicked(evt);
-=======
+
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/source/img/Search.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,7 +129,7 @@ public class Home extends javax.swing.JFrame {
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
->>>>>>> 1da85941af8c051fcb3fa88682713d461fc44288
+
             }
         });
 
