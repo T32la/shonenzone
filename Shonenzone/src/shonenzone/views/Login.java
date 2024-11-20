@@ -270,6 +270,7 @@ public class Login extends javax.swing.JFrame {
             // Crear y mostrar el JFrame de Home
             Home home = new Home(); // Asegúrate de que Home sea la clase de tu ventana principal
             home.setVisible(true); // Mostrar la ventana Home
+            this.dispose();
         } else {
             // Si el login falla, mostrar mensaje de error
             javax.swing.JOptionPane.showMessageDialog(this, result, "Error de Login", javax.swing.JOptionPane.ERROR_MESSAGE);
