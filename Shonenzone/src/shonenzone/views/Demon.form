@@ -33,10 +33,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="276" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="376" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="332" max="32767" attributes="0"/>
+              <EmptySpace pref="232" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +48,7 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="188" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -88,7 +88,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Estamos en la era Taisho de jap&#xf3;n. Tanjiro, un joven que se gana la &#xa;"/>
+            <Property name="text" type="java.lang.String" value="Estamos en la era Taisho de jap&#xf3;n. Tanjiro, un joven que se gana &#xa;la vida vendiendo carb&#xf3;n, descubre un d&#xed;a que su familia ha sido &#xa;asesinada por un demonio.  Para empeorar las cosas, su hermana &#xa;menor Nezuko, la &#xfa;nica superviviente de la masacre, ha sufrido &#xa;una transformaci&#xf3;n en demonio.&#xa;&#xa;Destrozado por los acontecimientos Tanjiro decide convertirse en&#xa;un cazador de demonios para poder devolver a su hermana  a la&#xa;normalidad"/>
           </Properties>
         </Component>
       </SubComponents>
