@@ -60,9 +60,13 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Vive un viaje a través de tu manga favorito");
 
+        jButton1.setBackground(new java.awt.Color(51, 102, 255));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/source/img/Menu.png"))); // NOI18N
         jButton1.setText("Menú");
 
+        txtBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        txtBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBusquedaActionPerformed(evt);
@@ -98,6 +102,8 @@ public class Home extends javax.swing.JFrame {
         jComboBox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jComboBox1.setName("Usuario"); // NOI18N
 
+        btnBuscar.setBackground(new java.awt.Color(204, 102, 255));
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/shonenzone/source/img/Search.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -111,8 +117,11 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        btnd.setBackground(new java.awt.Color(153, 153, 153));
         btnd.setFont(new java.awt.Font("Showcard Gothic", 1, 13)); // NOI18N
+        btnd.setForeground(new java.awt.Color(255, 51, 51));
         btnd.setText("DEAD NOTE");
+        btnd.setBorder(null);
         btnd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,7 +129,9 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        btnds.setBackground(new java.awt.Color(51, 255, 204));
         btnds.setFont(new java.awt.Font("Showcard Gothic", 0, 13)); // NOI18N
+        btnds.setForeground(new java.awt.Color(153, 102, 0));
         btnds.setText("DEMON SLAYER");
         btnds.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnds.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,11 +140,15 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        btnn.setBackground(new java.awt.Color(255, 102, 0));
         btnn.setFont(new java.awt.Font("Showcard Gothic", 0, 13)); // NOI18N
+        btnn.setForeground(new java.awt.Color(0, 0, 153));
         btnn.setText("NARUTO");
         btnn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnjk.setBackground(new java.awt.Color(51, 255, 255));
         btnjk.setFont(new java.awt.Font("Showcard Gothic", 0, 13)); // NOI18N
+        btnjk.setForeground(new java.awt.Color(102, 102, 0));
         btnjk.setText("JUJUTSU KAISEN");
         btnjk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -164,13 +179,13 @@ public class Home extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(btnd))
-                                .addComponent(jLabel4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(btnd, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -200,15 +215,16 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscar))
+                                .addComponent(btnBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
                                 .addComponent(jLabel16)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -219,9 +235,7 @@ public class Home extends javax.swing.JFrame {
                                         .addComponent(jLabel1)
                                         .addGap(138, 138, 138)
                                         .addComponent(salir)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addContainerGap(1675, Short.MAX_VALUE))))
+                        .addContainerGap(1769, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,11 +264,11 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnd)
                         .addComponent(btnds)
-                        .addComponent(btnn))
+                        .addComponent(btnn)
+                        .addComponent(btnd, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
                     .addComponent(btnjk))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -262,7 +276,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel12)
                     .addComponent(jLabel14))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
