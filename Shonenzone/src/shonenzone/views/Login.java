@@ -1,7 +1,9 @@
 package shonenzone.views;
 
 
+import java.io.File;
 import shonenzone.methods.LoginValidator;
+import static shonenzone.methods.Open.showWindowAndDispose;
 
 /**
  *
@@ -211,15 +213,16 @@ public class Login extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // abre el formulario de registro, si el usuario no tiene cuenta.
         Registro rg = new Registro();
-        rg.setVisible(true);
-        this.dispose();
+        showWindowAndDispose(this, rg);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void lgingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lgingresarMouseClicked
         // TODO add your handling code here
         String email = this.lgemail.getText();
         String password = this.lgpassword.getText();
-        String filePath = "data/db.txt";
+        // Directorio y data.txt
+        String userHome = System.getProperty("user.home");
+        String filePath = userHome + File.separator + "Documents" + File.separator + "data/db.txt";
         
         String result = LoginValidator.validate(filePath, email, password);
 
@@ -238,8 +241,7 @@ public class Login extends javax.swing.JFrame {
 
             // Crear y mostrar el JFrame de Home
             Home home = new Home(); // Asegúrate de que Home sea la clase de tu ventana principal
-            home.setVisible(true); // Mostrar la ventana Home
-            this.dispose();
+            showWindowAndDispose(this, home);
         } else {
             // Si el login falla, mostrar mensaje de error
             javax.swing.JOptionPane.showMessageDialog(this, result, "Error de Login", javax.swing.JOptionPane.ERROR_MESSAGE);

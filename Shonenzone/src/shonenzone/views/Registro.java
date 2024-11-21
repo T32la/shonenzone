@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import static shonenzone.methods.Open.showWindowAndDispose;
 
 /**
  *
@@ -224,12 +225,16 @@ public class Registro extends javax.swing.JFrame {
         this.rconfpassword.setText("");
 
         // Crea la carpeta si no existe
-        File carpeta = new File("data");
+        String userHome = System.getProperty("user.home");
+        String rutaDirectorio = userHome + File.separator + "Documents" + File.separator + "data";
+
+        File carpeta = new File(rutaDirectorio);
         if (!carpeta.exists()) {
             carpeta.mkdir();
         }
 
         // Archivo donde se guardarán los usuarios
+
         File archivoUsuario = new File(carpeta, "db.txt");
 
         try (BufferedWriter writes = new BufferedWriter(new FileWriter(archivoUsuario, true))) { // Modo 'append' habilitado
@@ -248,9 +253,8 @@ public class Registro extends javax.swing.JFrame {
 
         // Abre la ventana de Login
         Login lg = new Login();
-        lg.setVisible(true);
-        // Se cierra la ventana.
-        this.dispose();
+        // Metodo de abrir y cerrar ventana
+        showWindowAndDispose(this, lg);
     }//GEN-LAST:event_raccountMouseClicked
 
     

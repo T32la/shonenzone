@@ -8,7 +8,7 @@ package shonenzone.views;
  *
  * @author Usuario
  */
-public class portada extends javax.swing.JPanel {
+public class Death extends javax.swing.JPanel {
     /**
      * Creates new form portada
      */

@@ -59,15 +59,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnjk" min="-2" pref="136" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="btnjk" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
@@ -143,10 +138,10 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnd" alignment="0" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnds" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnd" alignment="0" pref="24" max="32767" attributes="0"/>
                   </Group>
                   <Component id="btnjk" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -380,6 +375,9 @@
           <Color id="Hand Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnnMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnjk">
       <Properties>
@@ -397,6 +395,9 @@
           <Color id="Hand Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnjkMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="salir">
       <Properties>

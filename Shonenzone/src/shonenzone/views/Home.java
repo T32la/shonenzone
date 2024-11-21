@@ -5,6 +5,7 @@
 package shonenzone.views;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import static shonenzone.methods.Open.showWindowAndDispose;
 /**
  *
  * @author DELL
@@ -14,9 +15,6 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    
-   
-    
     
     public Home() {
         initComponents();
@@ -145,12 +143,22 @@ public class Home extends javax.swing.JFrame {
         btnn.setForeground(new java.awt.Color(0, 0, 153));
         btnn.setText("NARUTO");
         btnn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnnMouseClicked(evt);
+            }
+        });
 
         btnjk.setBackground(new java.awt.Color(51, 255, 255));
         btnjk.setFont(new java.awt.Font("Showcard Gothic", 0, 13)); // NOI18N
         btnjk.setForeground(new java.awt.Color(102, 102, 0));
         btnjk.setText("JUJUTSU KAISEN");
         btnjk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnjk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnjkMouseClicked(evt);
+            }
+        });
 
         salir.setBackground(new java.awt.Color(255, 51, 51));
         salir.setFont(new java.awt.Font("Showcard Gothic", 0, 14)); // NOI18N
@@ -204,12 +212,9 @@ public class Home extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnjk, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(btnjk, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,10 +270,10 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnds)
-                        .addComponent(btnn)
-                        .addComponent(btnd, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                        .addComponent(btnn))
                     .addComponent(btnjk))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -296,25 +301,35 @@ public class Home extends javax.swing.JFrame {
 
     private void btndMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndMouseClicked
         // TODO add your handling code here:
+        Death death = new Death();
+        death.setVisible(true);
     }//GEN-LAST:event_btndMouseClicked
 
     private void btndsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btndsMouseClicked
         // TODO add your handling code here:
         Demon dn = new Demon();
-        dn.setVisible(true);
-        this.dispose();
+        showWindowAndDispose(this, dn);
     }//GEN-LAST:event_btndsMouseClicked
 
     private void salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseClicked
         // TODO add your handling code here:
         Login lg = new Login();
-        lg.setVisible(true);
-        this.dispose();
+        showWindowAndDispose(this, lg);
+
     }//GEN-LAST:event_salirMouseClicked
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_salirActionPerformed
+
+    private void btnnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnnMouseClicked
+
+    private void btnjkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnjkMouseClicked
+        // TODO add your handling code here:
+        Jujutsu juju = new Jujutsu();
+    }//GEN-LAST:event_btnjkMouseClicked
 
     /**
      * @param args the command line arguments
@@ -373,4 +388,5 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton salir;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
+
 }
